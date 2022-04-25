@@ -24,9 +24,9 @@ class ProductRepositoryTest {
         product.setActive(true);
         product.setDescription("good working condition");
         product.setPrice(new BigDecimal(100));
-        product.setName("Macbook Pro 16");
+        product.setName("Macbook Pro 13.3");
         product.setImageUrl("alien.png");
-        product.setSku("101ABC");
+        product.setSku("105ABC");
 
         //save product
         Product savedProduct = productRepository.save(product);
@@ -71,8 +71,19 @@ class ProductRepositoryTest {
         Product product = productRepository.findById(id).get();
         System.out.println(product.toString());
 
+    }
 
+    @Test
+    void findAllProducts(){
+       List<Product> products = productRepository.findAll();
 
+       products.forEach(product -> System.out.println(product.getName()));
+    }
+
+    @Test
+    void countMethod(){
+        long count = productRepository.count();
+        System.out.println(count);
     }
 
 }
